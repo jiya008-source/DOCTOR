@@ -1,4 +1,7 @@
 import doctorModel from "../models/doctorModel.js"
+import dotenv from 'dotenv';
+dotenv.config();
+
 
 const changeAvailablity = async (req, res) => {
 

@@ -5,6 +5,9 @@ import doctorModel from "../models/doctorModel.js"
 import jwt from 'jsonwebtoken'
 import appointmentModel from "../models/appointmentModel.js"
 import userModel from "../models/userModel.js"
+import dotenv from 'dotenv';
+dotenv.config();
+
 
 // API for adding doctor
 const addDoctor = async (req, res) => {
