@@ -1,8 +1,23 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const connectDB = async () => {
-  mongoose.connection.on('connected', () => console.log('Database Connected'))
-  await mongoose.connect(process.env.MONGODB_URI)
-}
+  try {
+    console.log('📡 Attempting MongoDB connection...');
+    console.log('URI:', process.env.MONGODB_URI);
 
-export default connectDB
+    // Remove deprecated options warnings
+    mongoose.set('strictQuery', false); // optional but clean
+
+    const conn = await mongoose.connect(process.env.MONGODB_URI, {
+      dbName: 'DOCTOR-APPOINTMENT-WEBSITE',
+      serverSelectionTimeoutMS: 5000, // 5s timeout
+    });
+
+    console.log(`✅ MongoDB connected at ${conn.connection.host}`);
+  } catch (err) {
+    console.error('❌ MongoDB connection failed:', err.message);
+    process.exit(1);
+  }
+};
+
+export default connectDB;
