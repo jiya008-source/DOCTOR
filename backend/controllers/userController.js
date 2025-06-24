@@ -86,6 +86,7 @@ const bookAppointment = async (req, res) => {
       docData: {
         _id: docData._id,
         name: docData.name,
+        image: docData.image,
         specialization: docData.specialization,
         fees: docData.fees,
         gender: docData.gender
